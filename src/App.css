@@ -1,0 +1,30 @@
+body {
+  background-color: #111;
+}
+
+h1,
+h2,
+p {
+  color: white;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.xp-bar {
+  width: 300px;
+  height: 20px;
+  background: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.xp-fill {
+  height: 100%;
+  background: limegreen;
+  transition: width 0.3s ease;
+}

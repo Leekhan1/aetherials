@@ -6,6 +6,15 @@ import snowpuff from "./assets/image/Snow_Puff__Aetherials_Style_-removebg-previ
 function App() {
   const [xp, setXp] = useState(0);
   const [level, setLevel] = useState(1);
+  const [mood, setMood] = useState("neutral");
+
+  function changeMood() {
+    setMood((prev) => {
+      if (prev === "neutral") return "happy";
+      if (prev === "happy") return "tired";
+      return "neutral";
+    });
+  }
 
   function gainXP() {
     const newXP = xp + 10;
@@ -17,7 +26,12 @@ function App() {
 
   return (
     <div>
-      <img src={snowpuff} alt="Snow Puff" className="snowpuff" />
+      <img
+        src={snowpuff}
+        alt="Snow Puff"
+        className={`snowpuff ${mood}`}
+        onClick={changeMood}
+      />
 
       <h1>Aetherials</h1>
 

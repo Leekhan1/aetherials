@@ -34,6 +34,47 @@ button {
   animation:
     float 3s ease-in-out infinite,
     blink 4s infinite;
+  position: relative;
+  display: inline-block;
+}
+
+/* Olho esquerdo */
+.snowpuff::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  top: 50px;
+  left: 60px;
+  animation: eyeBlink 3s infinite;
+}
+
+/* Olho direito */
+.snowpuff::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  top: 50px;
+  right: 60px;
+  animation: eyeBlink 3s infinite 0.15s;
+}
+
+@keyframes eyeBlink {
+
+  0%,
+  85%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  90% {
+    transform: scaleY(0.1);
+  }
 }
 
 @keyframes float {

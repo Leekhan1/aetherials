@@ -77,42 +77,41 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="app-container">
       <img
         src={getSprite()}
-        alt="Snow Puff"
+        alt={getCreatureName()}
         className={`snowpuff ${mood}`}
         onClick={handleClick}
       />
 
       <h1>Aetherials</h1>
+      <div className="status-panel">
+        <h2>{getCreatureName()}</h2>
+        <p className="level-text">Nível: {level}</p>
 
-      <h2>{getCreatureName()}</h2>
-
-      <p>Nível: {level}</p>
-
-      <div className="xp-section">
-        <p>XP: {xp} / {level * 50}</p>
-        <div className="xp-bar">
-          <div
-            className="xp-fill"
-            style={{ width: `${(xp / (level * 50)) * 100}%` }}
-          ></div>
+        <div className="xp-section">
+          <p>XP: {xp} / {level * 50}</p>
+          <div className="xp-bar">
+            <div
+              className="xp-fill"
+              style={{ width: `${(xp / (level * 50)) * 100}%` }}
+            ></div>
+          </div>
         </div>
-      </div>
 
-      <div className="energy-section">
-        <p>Energia: {energy}%</p>
-        <div className="energy-bar">
-          <div
-            className="energy-fill"
-            style={{
-              width: `${energy}%`,
-              height: "100%",
-              background: energy > 70 ? "lime" : energy > 30 ? "orange" : "red",
-              transition: "width 0.3s ease, background 0.3s ease",
-            }}
-          />
+        <div className="energy-section">
+          <p>Energia: {energy}%</p>
+          <div className="energy-bar">
+            <div
+              className="energy-fill"
+              style={{
+                width: `${energy}%`,
+                background: energy > 70 ? "lime" : energy > 30 ? "orange" : "red",
+                transition: "width 0.3s ease, background 0.3s ease",
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

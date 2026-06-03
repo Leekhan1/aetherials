@@ -51,10 +51,16 @@ function App() {
     setXp((prev) => prev + (energy > 70 ? 12 : energy > 30 ? 8 : 4));
   }
 
+  const getSprite = () => {
+    if (level >= 5) return "snowpuff_evolved3.png";
+    if (level >= 3) return "snowpuff_evolved2.png";
+    return snowpuff;
+  };
+
   return (
     <div>
       <img
-        src={snowpuff}
+        src={getSprite()}
         alt="Snow Puff"
         className={`snowpuff ${mood}`}
         onClick={handleClick}

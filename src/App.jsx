@@ -39,13 +39,14 @@ function App() {
 
       <p>Nível: {level}</p>
 
-      <p>XP: {xp}</p>
-
-      <div className="xp-bar">
-        <div
-          className="xp-fill"
-          style={{ width: `${xp % 100}%` }}
-        ></div>
+      <div className="xp-section">
+        <p>XP: {xp}</p>
+        <div className="xp-bar">
+          <div
+            className="xp-fill"
+            style={{ width: `${xp % 100}%` }}
+          ></div>
+        </div>
       </div>
 
       <button onClick={gainXP}>Ganhar XP</button>

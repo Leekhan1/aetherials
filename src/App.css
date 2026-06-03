@@ -29,6 +29,14 @@ button {
   transition: width 0.3s ease;
 }
 
+.xp-section {
+  margin: 15px 0;
+}
+
+.xp-section p {
+  margin: 5px 0;
+}
+
 .snowpuff {
   width: 200px;
   animation: float 3s ease-in-out infinite;

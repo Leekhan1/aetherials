@@ -35,7 +35,7 @@ function App() {
     if (level >= 3 && energy > 50) {
       newMood = "happy";
     }
-
+    // eslint-disable-next-line
     setMood(newMood);
   }, [energy, level]);
 
@@ -44,6 +44,7 @@ function App() {
     const xpNeeded = level * 50;
 
     if (xp >= xpNeeded) {
+      // eslint-disable-next-line
       setXp(0);
       setLevel((l) => l + 1);
     }

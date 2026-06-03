@@ -1,6 +1,9 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import snowpuff from "./assets/image/Snow_Puff__Aetherials_Style_-removebg-preview.png";
+import frostCub from "./assets/image/Frost Cub.png";
+import iceWolf from "./assets/image/Ice Wolf.png";
+import lykara from "./assets/image/Lykara.png";
 
 
 function App() {
@@ -60,9 +63,17 @@ function App() {
   }
 
   const getSprite = () => {
-    if (level >= 5) return "snowpuff_evolved3.png";
-    if (level >= 3) return "snowpuff_evolved2.png";
+    if (level >= 7) return lykara;
+    if (level >= 5) return iceWolf;
+    if (level >= 3) return frostCub;
     return snowpuff;
+  };
+
+  const getCreatureName = () => {
+    if (level >= 7) return "Lykara";
+    if (level >= 5) return "Ice Wolf";
+    if (level >= 3) return "Frost Cub";
+    return "Snow Puff";
   };
 
   return (
@@ -76,7 +87,7 @@ function App() {
 
       <h1>Aetherials</h1>
 
-      <h2>Snow Puff</h2>
+      <h2>{getCreatureName()}</h2>
 
       <p>Nível: {level}</p>
 

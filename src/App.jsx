@@ -23,14 +23,15 @@ function App() {
 
   // Humor baseado na energia (o "cérebro")
   useEffect(() => {
-    if (energy >= 70) {
+    if (energy >= 70) setMood("happy");
+    else if (energy >= 30) setMood("neutral");
+    else setMood("tired");
+
+    // bônus: level alto deixa ele mais "feliz naturalmente"
+    if (level >= 3 && energy > 50) {
       setMood("happy");
-    } else if (energy >= 30) {
-      setMood("neutral");
-    } else {
-      setMood("tired");
     }
-  }, [energy]);
+  }, [energy, level]);
 
   // Sistema de leveling
   useEffect(() => {

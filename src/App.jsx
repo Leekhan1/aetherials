@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div>
-      <img src={snowpuff} alt="Snow Puff" width="200" />
+      <img src={snowpuff} alt="Snow Puff" className="snowpuff" />
 
       <h1>Aetherials</h1>
 

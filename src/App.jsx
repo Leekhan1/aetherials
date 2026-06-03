@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import snowpuff from "./assets/image/Snow Puff (Aetherials Style).png";
+import snowpuff from "./assets/image/Snow_Puff__Aetherials_Style_-removebg-preview.png";
 
 
 function App() {

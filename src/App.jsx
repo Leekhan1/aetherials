@@ -78,12 +78,14 @@ function App() {
 
   return (
     <div className="app-container">
-      <img
-        src={getSprite()}
-        alt={getCreatureName()}
-        className={`snowpuff ${mood}`}
-        onClick={handleClick}
-      />
+      <div className="sprite-frame">
+        <img
+          src={getSprite()}
+          alt={getCreatureName()}
+          className={`snowpuff ${mood}`}
+          onClick={handleClick}
+        />
+      </div>
 
       <h1>Aetherials</h1>
       <div className="status-panel">

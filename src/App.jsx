@@ -23,14 +23,20 @@ function App() {
 
   // Humor baseado na energia (o "cérebro")
   useEffect(() => {
-    if (energy >= 70) setMood("happy");
-    else if (energy >= 30) setMood("neutral");
-    else setMood("tired");
+    let newMood = "tired";
+
+    if (energy >= 70) {
+      newMood = "happy";
+    } else if (energy >= 30) {
+      newMood = "neutral";
+    }
 
     // bônus: level alto deixa ele mais "feliz naturalmente"
     if (level >= 3 && energy > 50) {
-      setMood("happy");
+      newMood = "happy";
     }
+
+    setMood(newMood);
   }, [energy, level]);
 
   // Sistema de leveling
@@ -38,8 +44,8 @@ function App() {
     const xpNeeded = level * 50;
 
     if (xp >= xpNeeded) {
+      setXp(0);
       setLevel((l) => l + 1);
-      setXp(0); // reseta XP ou você pode carregar overflow depois
     }
   }, [xp, level]);
 

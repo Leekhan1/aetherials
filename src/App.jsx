@@ -41,7 +41,7 @@ function App() {
       setLevel((l) => l + 1);
       setXp(0); // reseta XP ou você pode carregar overflow depois
     }
-  }, [xp]);
+  }, [xp, level]);
 
   // Recuperar energia ao clicar
   function handleClick() {

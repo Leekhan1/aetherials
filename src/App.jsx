@@ -42,10 +42,11 @@ function App() {
 
   // Recuperar energia ao clicar
   function handleClick() {
-    setEnergy((prev) => {
-      const newEnergy = prev + 20;
-      return newEnergy > 100 ? 100 : newEnergy;
-    });
+    // energia sobe um pouco
+    setEnergy((e) => Math.min(100, e + 15));
+
+    // XP ganha baseado na energia
+    setXp((prev) => prev + (energy > 70 ? 12 : energy > 30 ? 8 : 4));
   }
 
   return (

@@ -4,10 +4,10 @@ import snowpuff from "./assets/image/Snow_Puff__Aetherials_Style_-removebg-previ
 
 
 function App() {
+  const [energy, setEnergy] = useState(100);
   const [xp, setXp] = useState(0);
   const [level, setLevel] = useState(1);
-  const [mood, setMood] = useState("neutral");
-  const [energy, setEnergy] = useState(100);
+  const [mood, setMood] = useState("happy");
 
   // Queda automática de energia
   useEffect(() => {

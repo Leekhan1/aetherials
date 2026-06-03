@@ -31,7 +31,9 @@ button {
 
 .snowpuff {
   width: 200px;
-  animation: float 3s ease-in-out infinite;
+  animation:
+    float 3s ease-in-out infinite,
+    blink 4s infinite;
 }
 
 @keyframes float {
@@ -45,5 +47,23 @@ button {
 
   100% {
     transform: translateY(0px);
+  }
+}
+
+/* "piscar" simples (efeito de luz) */
+@keyframes blink {
+
+  0%,
+  92%,
+  100% {
+    filter: brightness(1);
+  }
+
+  94% {
+    filter: brightness(0.4);
+  }
+
+  96% {
+    filter: brightness(1.2);
   }
 }

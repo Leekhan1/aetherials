@@ -32,13 +32,15 @@ function App() {
     }
   }, [energy]);
 
-  function gainXP() {
-    const newXP = xp + 10;
-    setXp(newXP);
-    if (newXP >= level * 100) {
-      setLevel(level + 1);
+  // Sistema de leveling
+  useEffect(() => {
+    const xpNeeded = level * 50;
+
+    if (xp >= xpNeeded) {
+      setLevel((l) => l + 1);
+      setXp(0); // reseta XP ou você pode carregar overflow depois
     }
-  }
+  }, [xp]);
 
   // Recuperar energia ao clicar
   function handleClick() {
@@ -65,11 +67,11 @@ function App() {
       <p>Nível: {level}</p>
 
       <div className="xp-section">
-        <p>XP: {xp}</p>
+        <p>XP: {xp} / {level * 50}</p>
         <div className="xp-bar">
           <div
             className="xp-fill"
-            style={{ width: `${xp % 100}%` }}
+            style={{ width: `${(xp / (level * 50)) * 100}%` }}
           ></div>
         </div>
       </div>
@@ -88,8 +90,6 @@ function App() {
           />
         </div>
       </div>
-
-      <button onClick={gainXP}>Ganhar XP</button>
     </div>
   );
 }

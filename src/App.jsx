@@ -7,20 +7,30 @@ function App() {
   const [xp, setXp] = useState(0);
   const [level, setLevel] = useState(1);
   const [mood, setMood] = useState("neutral");
+  const [energy, setEnergy] = useState(100);
 
+  // Queda automática de energia
   useEffect(() => {
     const interval = setInterval(() => {
-      setMood(() => {
-        const rand = Math.random();
-
-        if (rand > 0.75) return "happy";
-        if (rand > 0.4) return "neutral";
-        return "tired";
+      setEnergy((prev) => {
+        const newEnergy = prev - 2;
+        return newEnergy < 0 ? 0 : newEnergy;
       });
-    }, 5000); // muda a cada 5 segundos
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
+
+  // Humor baseado na energia (o "cérebro")
+  useEffect(() => {
+    if (energy >= 70) {
+      setMood("happy");
+    } else if (energy >= 30) {
+      setMood("neutral");
+    } else {
+      setMood("tired");
+    }
+  }, [energy]);
 
   function gainXP() {
     const newXP = xp + 10;
@@ -30,12 +40,21 @@ function App() {
     }
   }
 
+  // Recuperar energia ao clicar
+  function handleClick() {
+    setEnergy((prev) => {
+      const newEnergy = prev + 20;
+      return newEnergy > 100 ? 100 : newEnergy;
+    });
+  }
+
   return (
     <div>
       <img
         src={snowpuff}
         alt="Snow Puff"
         className={`snowpuff ${mood}`}
+        onClick={handleClick}
       />
 
       <h1>Aetherials</h1>
@@ -51,6 +70,21 @@ function App() {
             className="xp-fill"
             style={{ width: `${xp % 100}%` }}
           ></div>
+        </div>
+      </div>
+
+      <div className="energy-section">
+        <p>Energia: {energy}%</p>
+        <div className="energy-bar">
+          <div
+            className="energy-fill"
+            style={{
+              width: `${energy}%`,
+              height: "100%",
+              background: energy > 70 ? "lime" : energy > 30 ? "orange" : "red",
+              transition: "width 0.3s ease, background 0.3s ease",
+            }}
+          />
         </div>
       </div>
 

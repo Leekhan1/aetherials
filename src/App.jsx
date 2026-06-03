@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import snowpuff from "./assets/image/Snow_Puff__Aetherials_Style_-removebg-preview.png";
 
 
@@ -8,13 +8,19 @@ function App() {
   const [level, setLevel] = useState(1);
   const [mood, setMood] = useState("neutral");
 
-  function changeMood() {
-    setMood((prev) => {
-      if (prev === "neutral") return "happy";
-      if (prev === "happy") return "tired";
-      return "neutral";
-    });
-  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMood(() => {
+        const rand = Math.random();
+
+        if (rand > 0.75) return "happy";
+        if (rand > 0.4) return "neutral";
+        return "tired";
+      });
+    }, 5000); // muda a cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, []);
 
   function gainXP() {
     const newXP = xp + 10;
@@ -30,7 +36,6 @@ function App() {
         src={snowpuff}
         alt="Snow Puff"
         className={`snowpuff ${mood}`}
-        onClick={changeMood}
       />
 
       <h1>Aetherials</h1>

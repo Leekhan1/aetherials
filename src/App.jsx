@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState } from "react";
+import snowpuff from "./assets/snowpuff.png";
+
 
 function App() {
   const [xp, setXp] = useState(0);
@@ -15,6 +17,8 @@ function App() {
 
   return (
     <div>
+      <img src={snowpuff} alt="Snow Puff" width="200" />
+
       <h1>Aetherials</h1>
 
       <h2>Snow Puff</h2>
